@@ -61,4 +61,26 @@ server.put('/api/accounts/:id', (req, res) => {
     })
 })
 
+
+// Delete 
+
+server.delete('/api/accounts/"id', (req, res) => {
+  const id = req.params.id
+
+  db.remove(id)
+    .then( remove => {
+      if (remove) {
+        db.remove(remove)
+          .then(removePost => {
+            res.status(200).json(removePost)
+          })
+      } else {
+        res.status(404).json({error:{message: 'Could not Delete the Post.'}})
+      }
+    })
+    .catch( error => {
+      res.status(500).json({error:{message: 'Could not Comprehend.'}})
+    })
+})
+
 module.exports = server;
