@@ -32,5 +32,19 @@ server.get('/api/accounts/:id', (req, res) => {
     })
 })
 
+// Post || Create
+
+  server.post('/api/accounts', (req, res) => {
+    const newPost = req.body
+
+    db.insert(newPost)
+      .then(post => {
+        res.status(200).json(post)
+      })
+      .catch( error => {
+        res.status(500).json({error:{message: 'Could not complete Post.'}})
+      })
+  })
+
 
 module.exports = server;
