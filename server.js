@@ -46,5 +46,19 @@ server.get('/api/accounts/:id', (req, res) => {
       })
   })
 
+  // Update
+
+server.put('/api/accounts/:id', (req, res) => {
+  const updatePost = req.body
+  const id = req.params.id
+
+  db.update(id, updatePost)
+    .then( update => {
+      res.status(200).json(update)
+    })
+    .catch( error => {
+      res.status(500).json({error:{message: 'Could not Update the Post.'}})
+    })
+})
 
 module.exports = server;
