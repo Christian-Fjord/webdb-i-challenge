@@ -5,11 +5,7 @@ const db = require('./data/accounts-model');
 
 server.use(express.json());
 
-  //find,
-  //findById,
-  //add,
-  //remove,
-  //update
+  
 
   // Get
 
