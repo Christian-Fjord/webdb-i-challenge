@@ -5,13 +5,18 @@ const db = require('./data/accounts-model');
 
 server.use(express.json());
 
+  //find,
+  //findById,
+  //add,
+  //remove,
+  //update
 
-// Get
+  // Get
 
 server.get('/api/accounts', (req, res) => {
-  db.get()
-    .then( get => {
-      res.status(200).json(get)
+  db.find()
+    .then( action => {
+      res.status(200).json(action)
     })
     .catch( error => {
       res.status(500).json({error:{message: "The item(s) you tried to get could not be gotten."}})
@@ -23,7 +28,7 @@ server.get('/api/accounts', (req, res) => {
 server.get('/api/accounts/:id', (req, res) => {
   const id = req.params.id
 
-  db.getById(id)
+  db.findById(id)
     .then( getId => {
       res.status(200).json(getId)
     })
@@ -37,7 +42,7 @@ server.get('/api/accounts/:id', (req, res) => {
   server.post('/api/accounts', (req, res) => {
     const newPost = req.body
 
-    db.insert(newPost)
+    db.add(newPost)
       .then(post => {
         res.status(200).json(post)
       })
